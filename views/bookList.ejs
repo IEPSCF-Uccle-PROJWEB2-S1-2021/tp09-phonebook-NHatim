@@ -2,7 +2,13 @@
 <div class="container">
   <h1><%= title %></h1>
   <div class="row">
-    <table class="table">
+    <p>Add a new book...</p>
+  </div>
+  <div class="row justify-content-center">
+    <div class="spinner-border" role="status" id="loading-spinner">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <table class="table d-none" id="book-table">
       <thead>
         <tr>
           <th scope="column">Author</th>
@@ -11,18 +17,12 @@
         </tr>
       </thead>
       <tbody>
-        <% books.forEach(function(book) { -%>
-          <tr>
-            <td><%= book.author %></td>
-            <td><%= book.title %></td>
-            <td><%= book.year %></td>
-          </tr>
-        <% }); %>
       </tbody>
     </table>
-  </div>
-  <div class="row">
-    <p><a href="/books/new" class="btn btn-primary">Add a new book...</a></p>
+    <div class="alert alert-danger d-none" role="alert" id="loading-alert">
+      Cannot load the list of books.
+    </div>
   </div>
 </div>
+<script src="/scripts/book-script.js" defer></script>
 <%- include('footer') -%>
