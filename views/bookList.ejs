@@ -1,0 +1,28 @@
+<%- include('header'); -%>
+<div class="container">
+  <h1><%= title %></h1>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="column">Author</th>
+          <th scope="column">Title</th>
+          <th scope="column">Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% books.forEach(function(book) { -%>
+          <tr>
+            <td><%= book.author %></td>
+            <td><%= book.title %></td>
+            <td><%= book.year %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <p><a href="/books/new" class="btn btn-primary">Add a new book...</a></p>
+  </div>
+</div>
+<%- include('footer') -%>
