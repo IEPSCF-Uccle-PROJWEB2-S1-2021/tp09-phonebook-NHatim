@@ -37,13 +37,14 @@ function loadBooks() {
     })
     .catch((error) => {
       loadingAlert.classList.remove('d-none');
-      console.error(error);
     })
     .finally(() => {
       loadingSpinner.classList.add('d-none');
       clearTimeout(timer);
     });
 }
+
+loadBooks();
 
 const bookForm = document.getElementById('book-form');
 const authorInput = document.getElementById('authorInput');
@@ -107,4 +108,8 @@ bookForm.addEventListener('submit', (event) => {
   bookForm.classList.add('was-validated');
 });
 
-loadBooks();
+const refreshButton = document.getElementById('refresh-button');
+
+refreshButton.addEventListener('click', (event) => {
+  loadBooks();
+});
