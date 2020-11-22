@@ -1,28 +1,86 @@
 <%- include('header'); -%>
 <div class="container">
   <h1><%= title %></h1>
-  <div class="row">
-    <p>Add a new book...</p>
+
+  <div class="card mb-5">
+    <div class="card-body">
+      <h2 cladd="card-title">Library content</h2>
+      <div class="spinner-border" role="status" id="loading-spinner">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <table class="table d-none" id="book-table">
+        <thead>
+          <tr>
+            <th scope="column">Author</th>
+            <th scope="column">Title</th>
+            <th scope="column">Year</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="alert alert-danger d-none" role="alert" id="loading-alert">
+        Cannot load the list of books.
+      </div>
+      </div>
   </div>
-  <div class="row justify-content-center">
-    <div class="spinner-border" role="status" id="loading-spinner">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <table class="table d-none" id="book-table">
-      <thead>
-        <tr>
-          <th scope="column">Author</th>
-          <th scope="column">Title</th>
-          <th scope="column">Year</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-    <div class="alert alert-danger d-none" role="alert" id="loading-alert">
-      Cannot load the list of books.
+
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">New book</h2>
+      <div class="alert alert-danger d-none" role="alert" id="sending-failure">
+        Could not create this new book.
+      </div>
+      <form class="needs-validation" novalidate id="book-form">
+        <div class="mb-3">
+          <label for="authorInput" class="form-label">Author</label>
+          <input
+            type="text"
+            name="author"
+            required
+            minlength="3"
+            placeholder="John Smith"
+            id="authorInput"
+            class="form-control"
+          />
+          <div class="invalid-feedback">Author is required</div>
+        </div>
+        <div class="mb-3">
+          <label for="titleInput" class="form-label">Title</label>
+          <input
+            type="text"
+            name="title"
+            required
+            minlength="3"
+            placeholder="A fantastic tale"
+            id="titleInput"
+            class="form-control"
+          />
+          <div class="invalid-feedback">Title is required</div>
+        </div>
+        <div class="mb-3">
+          <label for="year" class="form-label">Year</label>
+          <input
+            type="number"
+            name="year"
+            required
+            min="0"
+            max="2100"
+            placeholder="1789"
+            id="yearInput"
+            class="form-control"
+          />
+          <div class="invalid-feedback">
+            A year between 0 and 2100 is required
+          </div>
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary">Add</button>
+          <button type="reset" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+      </form>
     </div>
   </div>
 </div>
+
 <script src="/scripts/book-script.js" defer></script>
 <%- include('footer') -%>
