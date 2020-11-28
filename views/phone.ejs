@@ -1,11 +1,10 @@
 <%- include('header'); -%>
 <div class="container">
   <h1><%= title %></h1>
-
   <div class="card mb-5">
     <div class="card-body">
       <h2 cladd="card-title">
-        Library content
+        Répertoire
         <button type="button" class="btn btn-outline-secondary float-right" id="refresh-button">
           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
@@ -16,70 +15,94 @@
       <div class="spinner-border" role="status" id="loading-spinner">
         <span class="visually-hidden">Loading...</span>
       </div>
-      <table class="table d-none" id="book-table">
+      <table class="table d-none" id="phone-table">
         <thead>
           <tr>
-            <th scope="column">Author</th>
-            <th scope="column">Title</th>
-            <th scope="column">Year</th>
+            <th scope="column">Nom</th>
+            <th scope="column">Prénom</th>
+            <th scope="column">Date de naissance</th>
+            <th scope="column">Numéro de téléphone</th>
+            <th scope="column">Adresse e-mail</th>
+
           </tr>
         </thead>
         <tbody></tbody>
       </table>
       <div class="alert alert-danger d-none" role="alert" id="loading-alert">
-        Cannot load the list of books.
+        Erreur d'affichage de la liste des numéros
       </div>
     </div>
   </div>
 
   <div class="card">
     <div class="card-body">
-      <h2 class="card-title">New book</h2>
+      <h2 class="card-title">Création numéro de téléphone</h2>
       <div class="alert alert-danger d-none" role="alert" id="sending-failure">
-        Could not create this new book.
+        Erreur de la création du numéro de téléphone
       </div>
-      <form class="needs-validation" novalidate id="book-form">
+      <form class="needs-validation" novalidate id="phone-form">
         <div class="mb-3">
-          <label for="authorInput" class="form-label">Author</label>
+          <label for="lastNameInput" class="form-label">Nom</label>
           <input
             type="text"
-            name="author"
+            name="lastName"
             required
             minlength="3"
-            placeholder="John Smith"
-            id="authorInput"
+            placeholder="Hatim"
+            id="lastNameInput"
             class="form-control"
           />
-          <div class="invalid-feedback">Author is required</div>
+          <div class="invalid-feedback">Le nom est requis</div>
         </div>
         <div class="mb-3">
-          <label for="titleInput" class="form-label">Title</label>
+          <label for="firstNameInput" class="form-label">Prénom</label>
           <input
             type="text"
-            name="title"
+            name="firstName"
             required
             minlength="3"
-            placeholder="A fantastic tale"
-            id="titleInput"
+            placeholder="Naimi"
+            id="firstNameInput"
             class="form-control"
           />
-          <div class="invalid-feedback">Title is required</div>
+          <div class="invalid-feedback">Le prénom est requis</div>
         </div>
         <div class="mb-3">
-          <label for="year" class="form-label">Year</label>
+          <label for="birthDateInput" class="form-label">Année de naissance</label>
           <input
-            type="number"
-            name="year"
-            required
-            min="0"
-            max="2100"
-            placeholder="1789"
-            id="yearInput"
+            type="date"
+            name="birthDate"
+            value="2020-11-28"
+            min="1900-01-01"
+            max="2020-11-28"
+            id="birthDateInput"
             class="form-control"
           />
           <div class="invalid-feedback">
-            A year between 0 and 2100 is required
+            Une année entre 1900 et 2020 est requise
           </div>
+        </div>
+        <div class="mb-3">
+          <label for="phoneInput" class="form-label">Téléphone</label>
+          <input
+            type="tel"
+            name="phone"
+            required
+            placeholder="+32485619617"
+            pattern="/^+91(7\d|8\d|9\d)\d{9}$/"
+            id="phoneInput"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="emailInput" class="form-label">Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="hat@mymail.com"
+            id="emailInput"
+            class="form-control"
+          />
         </div>
         <div class="mb-3">
           <button type="submit" class="btn btn-primary">Add</button>
@@ -90,5 +113,5 @@
   </div>
 </div>
 
-<script src="/js/book-script.js" defer></script>
+<script src="/js/phone-script.js" defer></script>
 <%- include('footer') -%>

@@ -3,7 +3,7 @@ const router = new express.Router();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'My Tiny Library' });
+  res.render('index', { title: 'Mon répertoire' });
 });
 
 module.exports = router;
