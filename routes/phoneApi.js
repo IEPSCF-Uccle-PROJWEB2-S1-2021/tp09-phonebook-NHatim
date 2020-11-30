@@ -1,7 +1,6 @@
 const express = require('express');
 const { body, validationResult } = require('express-validator');
 const createError = require('http-errors');
-const { options } = require('../app');
 
 class Phone {
   constructor(lastName, firstName, birthDate, phone, email) {
