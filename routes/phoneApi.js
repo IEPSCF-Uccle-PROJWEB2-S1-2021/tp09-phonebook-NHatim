@@ -33,15 +33,14 @@ router.all('*', requireAcceptsJson);
 router.get('/', (req, res, next) => {
   res. json({ phones });
 });
-const myDate = new Date ('1900-01-01')
 router.post(
   '/',
   [
     body('lastName').trim().isLength({ min: 3 }).escape(),
     body('firstName').trim().isLength({ min: 3 }).escape(),
     body('birthDate').isAfter('1900-01-01'),
-    body('phone').trim().matches(/^[+]{1}[0-9]{5,10}$/),
-    body('email').isEmail()
+    body('phone').trim().matches(/^[+]{1}[0-9]{8,11}$/),
+    body('emailAdress').normalizeEmail(),
   ],
   (req, res, next) => {
     const errors = validationResult(req);
@@ -49,7 +48,7 @@ router.post(
       next(createError(400));
     } else {
       const date = new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate())
-      const phone = new Phone(req.body.lastName, req.body.firstName, date, req.body.phone.trim(), req.body.email);
+      const phone = new Phone(req.body.lastName, req.body.firstName, date, req.body.phone.trim(), req.body.emailAdress);
       phones.push(phone);
       res.status(201);
       res.send("Created");

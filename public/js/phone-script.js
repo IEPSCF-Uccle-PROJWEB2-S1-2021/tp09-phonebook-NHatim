@@ -36,7 +36,7 @@ function loadPhones() {
         phoneCol.textContent = phone.phone;
         row.appendChild(phoneCol);
         const emailCol = document.createElement('td');
-        emailCol.textContent = phone.email;
+        emailCol.textContent = phone.emailAdress;
         row.appendChild(emailCol);
         phoneTableBody.appendChild(row);
       });
@@ -73,7 +73,7 @@ function sendForm() {
     firstName: firstNameInput.value,
     birthDate: birthDateInput.value,
     phone: phoneInput.value,
-    email: emailInput.value,
+    emailAdress: emailInput.value,
   };
 
   const abortController = new AbortController();
