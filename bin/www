@@ -5,7 +5,11 @@
  */
 
 const app = require('../app');
+<<<<<<< HEAD
 const debug = require('debug')('ajax:server');
+=======
+const debug = require('debug')('tp09-phonebook:server');
+>>>>>>> b0a3f029e64b9843d4a19fb53f337d4f005d1638
 const http = require('http');
 
 /**

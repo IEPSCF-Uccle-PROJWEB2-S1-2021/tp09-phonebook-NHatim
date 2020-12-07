@@ -14,7 +14,11 @@
         "runtimeExecutable": "nodemon",
         "env": {
           "NODE_ENV": "development",
+<<<<<<< HEAD
           "DEBUG": "ajax:*"
+=======
+          "DEBUG": "tp09-phonebook:*"
+>>>>>>> b0a3f029e64b9843d4a19fb53f337d4f005d1638
         },
         "skipFiles": [
           "<node_internals>/**"
